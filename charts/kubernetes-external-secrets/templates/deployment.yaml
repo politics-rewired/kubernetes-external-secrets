@@ -53,6 +53,9 @@ spec:
           {{- range $key, $value := . }}
           - name: {{ $key }}
             mountPath: {{ $value.mountPath }}
+            {{- if not (empty $value.subPath) }}
+            subPath: {{ $value.subPath }}
+            {{- end }}
             readOnly: true
           {{- end }}
           {{- end }}
